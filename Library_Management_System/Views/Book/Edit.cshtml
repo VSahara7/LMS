@@ -1,0 +1,42 @@
+﻿@model Book
+
+<form method="post" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit Book</h2>
+            <hr />
+        </div>
+        <input asp-for="BookId" type="hidden" class="form-control" />
+        <div class=mb-3>
+            <label asp-for=BookName></label>
+            <input asp-for="BookName" class="form-control" />
+            <span asp-validation-for="BookName" class="text-danger"></span>
+        </div>
+        <div class=mb-3>
+            <label asp-for=Author></label>
+            <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+        <div class=mb-3>
+            <label asp-for=Edition></label>
+            <input asp-for="Edition" class="form-control" />
+            <span asp-validation-for="Edition" class="text-danger"></span>
+        </div>
+        <div class=mb-3>
+            <label asp-for="BookPublishers.PublName"></label>
+            <select asp-for="PublisherId" asp-items="ViewBag.TypeDropDown" class="form-control">
+                <option selected>Select Publication</option>
+            </select>
+            <span asp-validation-for="PublisherId" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+        <a asp-controller="Book" asp-action="Index" class="btn alert-secondary" style="width:150px"> Back to List </a>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+
+    }
+}

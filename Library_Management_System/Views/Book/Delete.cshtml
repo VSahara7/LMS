@@ -1,0 +1,39 @@
+﻿@model Book
+<form method="post" asp-action="DeletePOST">
+    <div class="border p-3 mt-4">
+        <input asp-for="BookId" hidden />
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Book</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class=mb-3>
+            <label asp-for=BookName></label>
+            <input asp-for="BookName" disabled class="form-control" readonly />
+
+
+
+        </div>
+        <div class=mb-3>
+            <label asp-for=Author></label>
+            <input asp-for="Author" disabled class="form-control" readonly />
+
+
+
+        </div>
+        <div class=mb-3>
+            <label asp-for=Edition></label>
+            <input asp-for="Edition" disabled class="form-control" readonly />
+        </div>
+
+        <div class=mb-3>
+            <label asp-for="BookPublishers.PublName"></label>
+            <select asp-for="PublisherId" asp-items="ViewBag.TypeDropDown" disabled class="form-control">
+                <option selected>Select Publication</option>
+            </select>
+            <span asp-validation-for="PublisherId" disabled class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-danger" style="width:150px">Delete</button>
+        <a asp-controller="Book" asp-action="Index" class="btn alert-secondary" style="with:150px"> Back to List </a>
+    </div>
+</form>

@@ -1,0 +1,43 @@
+﻿@model Library_Management_System.Models.ViewModels.BookVM
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Book</h2>
+
+            <hr />
+        </div>
+        @*<div asp-validation-summary ="All"></div>*@
+        <div class=mb-3>
+            <label asp-for=Books.BookName></label>
+            <input asp-for="Books.BookName" class="form-control" />
+            <span asp-validation-for="Books.BookName" class="text-danger"></span>
+        </div>
+        <div class=mb-3>
+            <label asp-for=Books.Author></label>
+            <input asp-for="Books.Author" class="form-control" />
+            <span asp-validation-for="Books.Author" class="text-danger"></span>
+        </div>
+        <div class=mb-3>
+            <label asp-for=Books.Edition></label>
+            <input asp-for="Books.Edition" class="form-control" />
+            <span asp-validation-for="Books.Edition" class="text-danger"></span>
+        </div>
+        <div class=mb-3>
+            <label asp-for="Books.BookPublishers.PublName" ></label>
+            <select asp-for="Books.PublisherId" asp-items="@Model.TypeDropDown" class="form-control">
+                <option selected>Select Publication</option>
+            </select>
+            <span asp-validation-for="Books.PublisherId" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="Book" asp-action="Index" class="btn alert-secondary" style="width:150px"> Back to List </a>
+
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+        }
+}
